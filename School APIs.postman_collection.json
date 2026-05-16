@@ -1,0 +1,70 @@
+{
+  "info": {
+    "_postman_id": "9d94a291-c2c7-4489-a33f-18a25db73c84",
+    "name": "School APIs",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "12242996"
+  },
+  "item": [
+    {
+      "name": "Add School",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n \"name\":\"Bangalore Academy\",\r\n \"address\":\"Bangalore\",\r\n \"latitude\":12.9716,\r\n \"longitude\":77.5946\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/addSchool",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "addSchool"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "List Schools",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/listSchools?latitude=19.0760&longitude=72.8777",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "listSchools"
+          ],
+          "query": [
+            {
+              "key": "latitude",
+              "value": "19.0760"
+            },
+            {
+              "key": "longitude",
+              "value": "72.8777"
+            }
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
