@@ -13,7 +13,7 @@
         "header": [],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n \"name\":\"Bangalore Academy\",\r\n \"address\":\"Bangalore\",\r\n \"latitude\":12.9716,\r\n \"longitude\":77.5946\r\n}",
+          "raw": "{\r\n    \"name\":\"ABC School\",\r\n    \"address\":\"Mumbai\",\r\n    \"latitude\":19.0760,\r\n    \"longitude\":72.8777\r\n}",
           "options": {
             "raw": {
               "language": "json"
@@ -21,12 +21,14 @@
           }
         },
         "url": {
-          "raw": "http://localhost:3000/addSchool",
-          "protocol": "http",
+          "raw": "https://school-management-production-f501.up.railway.app/addSchool",
+          "protocol": "https",
           "host": [
-            "localhost"
+            "school-management-production-f501",
+            "up",
+            "railway",
+            "app"
           ],
-          "port": "3000",
           "path": [
             "addSchool"
           ]
@@ -43,12 +45,14 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "http://localhost:3000/listSchools?latitude=19.0760&longitude=72.8777",
-          "protocol": "http",
+          "raw": "https://school-management-production-f501.up.railway.app/listSchools?latitude=19.0760&longitude=72.8777",
+          "protocol": "https",
           "host": [
-            "localhost"
+            "school-management-production-f501",
+            "up",
+            "railway",
+            "app"
           ],
-          "port": "3000",
           "path": [
             "listSchools"
           ],
