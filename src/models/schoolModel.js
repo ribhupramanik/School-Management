@@ -7,18 +7,27 @@ export const addSchoolModel = async (
     longitude
 ) => {
 
-    const query = `
+    const query=`
         INSERT INTO schools
         (name,address,latitude,longitude)
         VALUES (?,?,?,?)
     `;
 
-    const [result] = await db.execute(query, [
-        name,
-        address,
-        latitude,
-        longitude
-    ]);
+    const [result]=await db.execute(
+        query,
+        [name,address,latitude,longitude]
+    );
 
     return result;
+};
+
+export const getAllSchools=async()=>{
+
+    const query=`
+        SELECT * FROM schools
+    `;
+
+    const [schools]=await db.execute(query);
+
+    return schools;
 };

@@ -2,6 +2,10 @@ import { validationResult } from "express-validator";
 
 import { addSchoolModel } from "../models/schoolModel.js";
 
+import { getAllSchools } from "../models/schoolModel.js";
+
+import { calculateDistance } from "../utils/distanceCalculator.js";
+
 export const addSchool = async (req, res) => {
 
     try {
@@ -44,4 +48,61 @@ export const addSchool = async (req, res) => {
         });
     }
 
+};
+
+export const listSchools = async (req, res) => {
+
+    try {
+
+        const latitude = parseFloat(req.query.latitude);
+        const longitude = parseFloat(req.query.longitude);
+
+        if (
+            isNaN(latitude) ||
+            isNaN(longitude)
+        ) {
+            return res.status(400).json({
+                success: false,
+                message: "Valid latitude and longitude required"
+            });
+        }
+
+        const schools = await getAllSchools();
+
+        const sortedSchools =
+            schools
+            .map((school) => {
+
+                const distance =
+                    calculateDistance(
+                        latitude,
+                        longitude,
+                        school.latitude,
+                        school.longitude
+                    );
+
+                return {
+                    ...school,
+                    distance: Number(distance.toFixed(2))
+                };
+            })
+            .sort((a, b) =>
+                a.distance - b.distance
+            );
+
+        return res.status(200).json({
+            success: true,
+            count: sortedSchools.length,
+            data: sortedSchools
+        });
+
+    } catch (error) {
+
+        console.log(error);
+
+        return res.status(500).json({
+            success: false,
+            message: "Internal Server Error"
+        });
+    }
 };
